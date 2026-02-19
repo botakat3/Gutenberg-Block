@@ -1,9 +1,11 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
+@import "/src/scss/variables";
+.wp-block-tk-testimonial{
+	border: 2px dashed #f00;
+	textarea, input[type=text] {
+		background-color: $bg-light;
+	}
 
-.wp-block-tk-testimonial {
-	border: 1px dotted #f00;
+	img:not([draggable]), svg:not([draggable]){
+		pointer-events: all;
+	}
 }

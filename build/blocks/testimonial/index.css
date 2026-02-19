@@ -1,13 +1,14 @@
 /*!***********************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/testimonial/editor.scss ***!
   \***********************************************************************************************************************************************************************************************************************************************************/
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
 .wp-block-tk-testimonial {
-  border: 1px dotted #f00;
+  border: 2px dashed #f00;
+}
+.wp-block-tk-testimonial textarea, .wp-block-tk-testimonial input[type=text] {
+  background-color: #FCFCFC;
+}
+.wp-block-tk-testimonial img:not([draggable]), .wp-block-tk-testimonial svg:not([draggable]) {
+  pointer-events: all;
 }
 
 /*# sourceMappingURL=index.css.map*/

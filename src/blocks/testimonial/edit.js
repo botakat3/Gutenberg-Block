@@ -11,7 +11,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import {MediaUpload, MediaUploadCheck, RichText, PlainText, useBlockProps} from '@wordpress/block-editor';
+import { SelectControl } from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,13 +30,59 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit({attributes, setAttributes}) {
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'High Pulp Blocks – Top of the morning from the editor!',
-				'high-pulp-blocks'
-			) }
-		</p>
+		<div { ...useBlockProps() }>
+			<SelectControl
+			label="Select a Rating"
+			value={ attributes.stars }
+			onChange={stars => setAttributes({stars: parseInt(stars)})}
+			options={[
+				{value:1, label: '*'},
+				{value:2, label: '**'},
+				{value:3, label: '***'},
+				{value:4, label: '****'},
+				{value:5, label: '*****'},
+			]}
+			/>
+
+			<RichText className="quote"
+					  placeholder="Start typing here.."
+					  tagName="div"
+					  value={attributes.quote}
+					  onChange={quote => setAttributes({quote})}
+					  allowFormats={['core/bold', 'core/italic']}
+
+			/>
+
+			<div className="quote-profile">
+				<div className="photo">
+					<MediaUploadCheck>
+						<MediaUpload
+							onSelect={(media) =>
+								setAttributes({imgUrl: media.sizes.thumbnail.url})
+							}
+							allowedTypes={'image'}
+							render={({open}) => (
+								<img src={attributes.imgUrl} onClick={open} alt="Upload media"/>
+							)}
+						/>
+					</MediaUploadCheck>
+
+				</div>
+				<div className="text">
+					<PlainText className="author"
+							   placeholder="Eric Foreman"
+							   value={attributes.author}
+							   onChange={author => setAttributes({author})}
+					/>
+					<PlainText className="location"
+							   placeholder="Location Placeholder"
+							   value={attributes.location}
+							   onChange={location => setAttributes({location})}
+					/>
+				</div>
+			</div>
+		</div>
 	);
 }

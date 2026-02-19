@@ -24,6 +24,31 @@ return array(
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
-		'viewScript' => 'file:./view.js'
+		'viewScript' => 'file:./view.js',
+		'attributes' => array(
+			'author' => array(
+				'type' => 'string',
+				'source' => 'text',
+				'selector' => '.author'
+			),
+			'location' => array(
+				'type' => 'string',
+				'source' => 'text',
+				'selector' => '.location'
+			),
+			'quote' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => '.quote'
+			),
+			'stars' => array(
+				'type' => 'number',
+				'default' => 5
+			),
+			'imageUrl' => array(
+				'type' => 'string',
+				'default' => 'https://placehold.co/75'
+			)
+		)
 	)
 );
