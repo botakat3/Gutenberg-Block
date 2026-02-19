@@ -1,0 +1,14 @@
+{
+	"core": "WordPress/WordPress",
+	"plugins": [
+		".",
+		"https://downloads.wordpress.org/plugin/query-monitor.3.20.2.zip"
+	],
+	"port": 80,
+	"phpmyadminPort": 8080,
+	"env": {
+		"tests": {
+			"phpmyadminPort": 8081
+		}
+	}
+}
