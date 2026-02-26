@@ -32,7 +32,7 @@ export default function save({attributes}) {
 						href={ attributes.buttonUrl }
 						target="_blank"
 					>
-						Checkout { attributes.project }
+						Check out { attributes.project }
 					</a>
 				) : null}
 			</div>

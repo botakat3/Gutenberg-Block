@@ -16,12 +16,11 @@
 /* kb/project-block — Notebook grid + two-column layout */
 
 .wp-block-kb-project-block {
-	/* palette */
 	--paper: #fbf6ef;
 	--grid: rgba(162, 206, 230, 0.35);
-	--ink: #2a1614;
+	--ink: #200808;
 	--card: #e9e4df;
-	--accent: #f26f5b;
+	--accent: #F47258;
 
 	/* grid paper background */
 	background-color: var(--paper);
@@ -39,7 +38,8 @@
 	grid-template-areas:
 		"title title"
 		"left right";
-	gap: clamp(40px, 6vw, 120px);
+	row-gap: 16px;
+	column-gap: clamp(40px, 6vw, 120px);
 	align-items: start;
 }
 
@@ -76,6 +76,7 @@
 	max-width: 520px;
 	aspect-ratio: 3 / 4;
 	object-fit: cover;
+	object-position: top;
 	display: block;
 	border-radius: 28px;
 }
@@ -114,7 +115,7 @@
 	max-width: 560px;
 }
 
-/* Overview heading (handwritten-ish) */
+/* Overview heading */
 .wp-block-kb-project-block .rightside h2 {
 	margin: 0 0 10px;
 	color: var(--ink);
@@ -122,9 +123,9 @@
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 
-	font-family: 'Casual Human', serif;
-	font-weight: normal;
-	font-style: normal;
+	font-family: "Casual Human", "Bradley Hand", cursive;
+	font-weight: 700;
+
 }
 
 /* Overview body */
@@ -133,7 +134,7 @@
 	color: var(--ink);
 	font-size: 18px;
 	line-height: 1.55;
-	font-family: Poppins, Roboto, sans-serif;
+	font-family: "Poppins", Roboto, sans-serif;
 	max-width: 520px;
 }
 
