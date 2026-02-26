@@ -1,6 +1,7 @@
 @import "/src/scss/variables";
-.wp-block-tk-testimonial{
-	border: 2px dashed #f00;
+	.wp-block-tk-testimonial{
+
+		border: 2px dashed #f00;
 	textarea, input[type=text] {
 		background-color: $bg-light;
 	}
@@ -8,4 +9,6 @@
 	img:not([draggable]), svg:not([draggable]){
 		pointer-events: all;
 	}
+
+
 }

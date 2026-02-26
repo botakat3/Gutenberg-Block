@@ -1,16 +1,17 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tk/testimonial",
+	"name": "kb/project-block",
 	"version": "0.1.0",
-	"title": "Testimonial",
+	"title": "Project Block",
 	"category": "design",
-	"icon": "testimonial",
-	"description": "add some extra pulpy testimonials!",
-	"keywords": ["reviews", "wctc"],
+	"icon": "project-block",
+	"description": "Add your projects!",
+	"keywords": ["project"],
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"align": ["wide", "full"]
 	},
 	"textdomain": "high-pulp-blocks",
 	"editorScript": "file:./index.js",
@@ -18,26 +19,23 @@
 	"style": "file:./style-index.css",
 	"viewScript": "file:./view.js",
 	"attributes": {
-		"author": {
+		"project": {
 			"type": "string",
 			"source": "text",
-			"selector": ".author"
+			"selector": ".project"
 		},
-		"location": {
-			"type": "string",
-			"source": "text",
-			"selector": ".location"
-		},
-		"quote": {
+		"overview": {
 			"type": "string",
 			"source": "html",
-			"selector": ".quote"
+			"selector": ".overview"
 		},
-		"stars": {
-			"type": "number",
-			"default": 5
+		"buttonUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".button",
+			"attribute": "href"
 		},
-		"imgUrl": {
+		"imageUrl": {
 			"type": "string",
 			"default": "https://placehold.co/75"
 		}

@@ -11,8 +11,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import {MediaUpload, MediaUploadCheck, RichText, PlainText, useBlockProps} from '@wordpress/block-editor';
-import { SelectControl } from "@wordpress/components";
+import {MediaUpload, MediaUploadCheck, RichText, PlainText, useBlockProps, URLInput,} from '@wordpress/block-editor';
+import {Button, SelectControl} from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -31,45 +31,60 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit({attributes, setAttributes}) {
+
 	return (
-		<div { ...useBlockProps() }>
+		<div {...useBlockProps() }>
 
-			<RichText className="quote"
-					  placeholder="Start typing here.."
-					  tagName="div"
-					  value={attributes.quote}
-					  onChange={quote => setAttributes({quote})}
-					  allowFormats={['core/bold', 'core/italic']}
-
+			<PlainText className="project"
+					   placeholder="Project Name Placeholder"
+					   value={attributes.project}
+					   onChange={project => setAttributes({project})}
 			/>
 
-			<div className="quote-profile">
+			<div className="leftside">
 				<div className="photo">
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={(media) =>
-								setAttributes({imgUrl: media.sizes.thumbnail.url})
+								setAttributes({imageUrl: media.sizes.large.url})
 							}
-							allowedTypes={'image'}
+							allowedTypes={['image']}
 							render={({open}) => (
-								<img src={attributes.imgUrl} onClick={open} alt="Upload media"/>
-							)}
+								<img
+									src={attributes.imageUrl}
+									onClick={() => open()}
+									alt="Upload media"
+								/>							)}
 						/>
 					</MediaUploadCheck>
 				</div>
-				<div className="text">
-					<PlainText className="author"
-							   placeholder="Eric Foreman"
-							   value={attributes.author}
-							   onChange={author => setAttributes({author})}
+
+				<div className="project-link">
+					<p>Project Link</p>
+					<URLInput
+						value={attributes.buttonUrl}
+						onChange={(buttonUrl) => setAttributes({buttonUrl})}
+						placeholder="URL to project"
 					/>
-					<PlainText className="location"
-							   placeholder="Location Placeholder"
-							   value={attributes.location}
-							   onChange={location => setAttributes({location})}
-					/>
+
 				</div>
 			</div>
+
+
+	<div className="rightside">
+		<div className="text">
+			<h2>Overview</h2>
+			<RichText className="overview"
+					  placeholder="Start typing description here..."
+					  tagName="div"
+					  value={attributes.overview}
+					  onChange={overview => setAttributes({overview})}
+					  allowFormats={['core/bold', 'core/italic']}
+
+			/>
+
 		</div>
-	);
+	</div>
+</div>
+);
 }

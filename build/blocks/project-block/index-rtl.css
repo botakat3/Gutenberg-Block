@@ -1,0 +1,146 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/project-block/editor.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap);
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/project-block/editor.scss (1) ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+.wp-block-kb-project-block {
+  border: 2px dashed #f00;
+}
+.wp-block-kb-project-block textarea, .wp-block-kb-project-block input[type=text] {
+  background-color: #FCFCFC;
+}
+.wp-block-kb-project-block img:not([draggable]), .wp-block-kb-project-block svg:not([draggable]) {
+  pointer-events: all;
+}
+/* kb/project-block — Notebook grid + two-column layout */
+.wp-block-kb-project-block {
+  /* palette */
+  --paper: #fbf6ef;
+  --grid: rgba(162, 206, 230, 0.35);
+  --ink: #2a1614;
+  --card: #e9e4df;
+  --accent: #f26f5b;
+  /* grid paper background */
+  background-color: var(--paper);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(-90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  padding: clamp(24px, 4vw, 56px);
+  border-radius: 20px;
+  /* layout */
+  display: grid;
+  grid-template-columns: minmax(280px, 520px) 1fr;
+  grid-template-areas: "title title" "left right";
+  gap: clamp(40px, 6vw, 120px);
+  align-items: start;
+}
+/* Title */
+.wp-block-kb-project-block .project {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: title;
+  color: var(--ink);
+  font-size: clamp(36px, 4.4vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-family: "Super Chill";
+  font-weight: normal;
+  font-style: normal;
+}
+.wp-block-kb-project-block .leftside {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: left;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.wp-block-kb-project-block .photo {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.wp-block-kb-project-block .photo img {
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 3/4;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  border-radius: 28px;
+}
+.wp-block-kb-project-block a.button.wp-element-button,
+.wp-block-kb-project-block .button.wp-element-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(360px, 90%);
+  padding: 16px 26px;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: #24100f;
+  text-decoration: none;
+  font-family: Poppins, serif;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 10px 24px rgba(242, 111, 91, 0.25);
+}
+.wp-block-kb-project-block a.button.wp-element-button:hover {
+  filter: brightness(0.98);
+  transform: translateY(-1px);
+}
+/* Right side text */
+.wp-block-kb-project-block .rightside {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: right;
+  padding-top: 10px;
+  max-width: 560px;
+}
+/* Overview heading (handwritten-ish) */
+.wp-block-kb-project-block .rightside h2 {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: clamp(28px, 3vw, 44px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: "Casual Human", serif;
+  font-weight: normal;
+  font-style: normal;
+}
+/* Overview body */
+.wp-block-kb-project-block .overview {
+  margin: 0;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.55;
+  font-family: Poppins, Roboto, sans-serif;
+  max-width: 520px;
+}
+/* Mobile stack */
+@media (max-width: 900px) {
+  .wp-block-kb-project-block {
+    grid-template-columns: 1fr;
+    grid-template-areas: "title" "left" "right";
+  }
+  .wp-block-kb-project-block .rightside {
+    max-width: 100%;
+  }
+  .wp-block-kb-project-block .project {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+  }
+  .wp-block-kb-project-block .leftside {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+  }
+  .wp-block-kb-project-block .rightside {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+  }
+}

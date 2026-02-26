@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/blocks/testimonial/edit.js"
-/*!****************************************!*\
-  !*** ./src/blocks/testimonial/edit.js ***!
-  \****************************************/
+/***/ "./src/blocks/project-block/edit.js"
+/*!******************************************!*\
+  !*** ./src/blocks/project-block/edit.js ***!
+  \******************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/testimonial/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/project-block/editor.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__);
 /**
@@ -60,71 +60,80 @@ function Edit({
 }) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-      className: "quote",
-      placeholder: "Start typing here..",
-      tagName: "div",
-      value: attributes.quote,
-      onChange: quote => setAttributes({
-        quote
-      }),
-      allowFormats: ['core/bold', 'core/italic']
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PlainText, {
+      className: "project",
+      placeholder: "Project Name Placeholder",
+      value: attributes.project,
+      onChange: project => setAttributes({
+        project
+      })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "quote-profile",
+      className: "leftside",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "photo",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
             onSelect: media => setAttributes({
-              imgUrl: media.sizes.thumbnail.url
+              imageUrl: media.sizes.large.url
             }),
-            allowedTypes: 'image',
+            allowedTypes: ['image'],
             render: ({
               open
             }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-              src: attributes.imgUrl,
-              onClick: open,
+              src: attributes.imageUrl,
+              onClick: () => open(),
               alt: "Upload media"
             })
           })
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "text",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PlainText, {
-          className: "author",
-          placeholder: "Eric Foreman",
-          value: attributes.author,
-          onChange: author => setAttributes({
-            author
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PlainText, {
-          className: "location",
-          placeholder: "Location Placeholder",
-          value: attributes.location,
-          onChange: location => setAttributes({
-            location
-          })
+        className: "project-link",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          children: "Project Link"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.URLInput, {
+          value: attributes.buttonUrl,
+          onChange: buttonUrl => setAttributes({
+            buttonUrl
+          }),
+          placeholder: "URL to project"
         })]
       })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "rightside",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "text",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+          children: "Overview"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+          className: "overview",
+          placeholder: "Start typing description here...",
+          tagName: "div",
+          value: attributes.overview,
+          onChange: overview => setAttributes({
+            overview
+          }),
+          allowFormats: ['core/bold', 'core/italic']
+        })]
+      })
     })]
   });
 }
 
 /***/ },
 
-/***/ "./src/blocks/testimonial/index.js"
-/*!*****************************************!*\
-  !*** ./src/blocks/testimonial/index.js ***!
-  \*****************************************/
+/***/ "./src/blocks/project-block/index.js"
+/*!*******************************************!*\
+  !*** ./src/blocks/project-block/index.js ***!
+  \*******************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/testimonial/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/testimonial/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/testimonial/save.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks/testimonial/block.json");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/project-block/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/project-block/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/project-block/save.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks/project-block/block.json");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -166,10 +175,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ },
 
-/***/ "./src/blocks/testimonial/save.js"
-/*!****************************************!*\
-  !*** ./src/blocks/testimonial/save.js ***!
-  \****************************************/
+/***/ "./src/blocks/project-block/save.js"
+/*!******************************************!*\
+  !*** ./src/blocks/project-block/save.js ***!
+  \******************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -201,33 +210,32 @@ __webpack_require__.r(__webpack_exports__);
 function save({
   attributes
 }) {
-  let starIcons = Array(5).fill('&starf;', 0, attributes.stars).join('');
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "stars",
-      children: starIcons
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
-      className: "quote",
-      tagName: "div",
-      value: attributes.quote
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+      className: "project",
+      children: attributes.project
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "quote-profile",
+      className: "leftside",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "photo",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-          src: attributes.imgUrl,
-          alt: "Photo of " + attributes.author
+          src: attributes.imageUrl,
+          alt: "Photo of " + attributes.project
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "text",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "author",
-          children: attributes.author
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "location",
-          children: attributes.location
-        })]
+      }), attributes.buttonUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+        className: "button wp-element-button",
+        href: attributes.buttonUrl,
+        target: "_blank",
+        children: ["Checkout ", attributes.project]
+      }) : null]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "rightside",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+        children: "Overview"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        className: "overview",
+        children: attributes.overview
       })]
     })]
   });
@@ -235,10 +243,10 @@ function save({
 
 /***/ },
 
-/***/ "./src/blocks/testimonial/editor.scss"
-/*!********************************************!*\
-  !*** ./src/blocks/testimonial/editor.scss ***!
-  \********************************************/
+/***/ "./src/blocks/project-block/editor.scss"
+/*!**********************************************!*\
+  !*** ./src/blocks/project-block/editor.scss ***!
+  \**********************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -247,10 +255,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ },
 
-/***/ "./src/blocks/testimonial/style.scss"
-/*!*******************************************!*\
-  !*** ./src/blocks/testimonial/style.scss ***!
-  \*******************************************/
+/***/ "./src/blocks/project-block/style.scss"
+/*!*********************************************!*\
+  !*** ./src/blocks/project-block/style.scss ***!
+  \*********************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -309,13 +317,13 @@ module.exports = window["wp"]["i18n"];
 
 /***/ },
 
-/***/ "./src/blocks/testimonial/block.json"
-/*!*******************************************!*\
-  !*** ./src/blocks/testimonial/block.json ***!
-  \*******************************************/
+/***/ "./src/blocks/project-block/block.json"
+/*!*********************************************!*\
+  !*** ./src/blocks/project-block/block.json ***!
+  \*********************************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"tk/testimonial","version":"0.1.0","title":"Testimonial","category":"design","icon":"testimonial","description":"add some extra pulpy testimonials!","keywords":["reviews","wctc"],"example":{},"supports":{"html":false},"textdomain":"high-pulp-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"author":{"type":"string","source":"text","selector":".author"},"location":{"type":"string","source":"text","selector":".location"},"quote":{"type":"string","source":"html","selector":".quote"},"stars":{"type":"number","default":5},"imgUrl":{"type":"string","default":"https://placehold.co/75"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"kb/project-block","version":"0.1.0","title":"Project Block","category":"design","icon":"project-block","description":"Add your projects!","keywords":["project"],"example":{},"supports":{"html":false,"align":["wide","full"]},"textdomain":"high-pulp-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"project":{"type":"string","source":"text","selector":".project"},"overview":{"type":"string","source":"html","selector":".overview"},"buttonUrl":{"type":"string","source":"attribute","selector":".button","attribute":"href"},"imageUrl":{"type":"string","default":"https://placehold.co/75"}}}');
 
 /***/ }
 
@@ -435,8 +443,8 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"blocks/testimonial/index": 0,
-/******/ 			"blocks/testimonial/style-index": 0
+/******/ 			"blocks/project-block/index": 0,
+/******/ 			"blocks/project-block/style-index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -486,7 +494,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["blocks/testimonial/style-index"], () => (__webpack_require__("./src/blocks/testimonial/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["blocks/project-block/style-index"], () => (__webpack_require__("./src/blocks/project-block/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -1,6 +1,56 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
+	'project-block' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'kb/project-block',
+		'version' => '0.1.0',
+		'title' => 'Project Block',
+		'category' => 'design',
+		'icon' => 'project-block',
+		'description' => 'Add your projects!',
+		'keywords' => array(
+			'project'
+		),
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false,
+			'align' => array(
+				'wide',
+				'full'
+			)
+		),
+		'textdomain' => 'high-pulp-blocks',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js',
+		'attributes' => array(
+			'project' => array(
+				'type' => 'string',
+				'source' => 'text',
+				'selector' => '.project'
+			),
+			'overview' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => '.overview'
+			),
+			'buttonUrl' => array(
+				'type' => 'string',
+				'source' => 'attribute',
+				'selector' => '.button',
+				'attribute' => 'href'
+			),
+			'imageUrl' => array(
+				'type' => 'string',
+				'default' => 'https://placehold.co/75'
+			)
+		)
+	),
 	'testimonial' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
@@ -45,7 +95,7 @@ return array(
 				'type' => 'number',
 				'default' => 5
 			),
-			'imageUrl' => array(
+			'imgUrl' => array(
 				'type' => 'string',
 				'default' => 'https://placehold.co/75'
 			)
