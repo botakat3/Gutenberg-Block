@@ -227,7 +227,7 @@ function save({
         className: "button wp-element-button",
         href: attributes.buttonUrl,
         target: "_blank",
-        children: ["Checkout ", attributes.project]
+        children: ["Check out ", attributes.project]
       }) : null]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "rightside",

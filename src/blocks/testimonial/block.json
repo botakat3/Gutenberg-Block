@@ -40,6 +40,15 @@
 		"imgUrl": {
 			"type": "string",
 			"default": "https://placehold.co/75"
+		},
+		"backgroundColorClass": {
+			"type": "string"
+		},
+		"borderColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
 		}
 	}
 }

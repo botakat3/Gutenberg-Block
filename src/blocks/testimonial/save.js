@@ -20,9 +20,16 @@ export default function save({attributes}) {
 		.fill('&starf;', 0, attributes.stars)
 		.join('');
 
+	let divStyle = {
+		// css property : value
+		// css property is camelCased
+		borderColor: attributes.borderColor,
+		color: attributes.textColor,
+	}
+
 
 	return (
-		<div { ...useBlockProps.save() }>
+		<div { ...useBlockProps.save({className: attributes.backgroundColorClass, style: divStyle}) }>
 			<div className="stars">{ starIcons }</div>
 			<RichText.Content
 				className="quote"

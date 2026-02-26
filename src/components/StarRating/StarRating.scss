@@ -1,0 +1,11 @@
+.stars {
+	.star {
+		&.on {
+			color: yellow;
+		}
+
+		&.off {
+			color: gray;
+		}
+	}
+}

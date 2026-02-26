@@ -98,6 +98,15 @@ return array(
 			'imgUrl' => array(
 				'type' => 'string',
 				'default' => 'https://placehold.co/75'
+			),
+			'backgroundColorClass' => array(
+				'type' => 'string'
+			),
+			'borderColor' => array(
+				'type' => 'string'
+			),
+			'textColor' => array(
+				'type' => 'string'
 			)
 		)
 	)

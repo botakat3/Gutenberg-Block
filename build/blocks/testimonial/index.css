@@ -10,5 +10,14 @@
 .wp-block-tk-testimonial img:not([draggable]), .wp-block-tk-testimonial svg:not([draggable]) {
   pointer-events: all;
 }
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/components/StarRating/StarRating.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
+.stars .star.on {
+  color: yellow;
+}
+.stars .star.off {
+  color: gray;
+}
 
 /*# sourceMappingURL=index.css.map*/

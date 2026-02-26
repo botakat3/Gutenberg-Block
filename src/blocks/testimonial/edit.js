@@ -21,6 +21,8 @@ import { SelectControl } from "@wordpress/components";
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
+import StarRating from "../../components/StarRating/StarRating";
+import BlockSettings from "./BlockSettings";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,8 +33,35 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit({attributes, setAttributes}) {
+
+	let divStyle = {
+		// css property : value
+		// css property is camelCased
+		borderColor: attributes.borderColor,
+		color: attributes.textColor,
+	}
+
 	return (
-		<div { ...useBlockProps() }>
+		<div { ...useBlockProps({className: attributes.backgroundColorClass, style: divStyle}) }>
+
+			<BlockSettings attributes={attributes} setAttributes={setAttributes} />
+
+			{/*<SelectControl*/}
+			{/*	label="Select a rating"*/}
+			{/*	value={attributes.stars}*/}
+			{/*	onChange={stars => setAttributes({stars: parseInt(stars)})}*/}
+			{/*	options={[*/}
+			{/*		{value:1, label:'*'},*/}
+			{/*		{value:2, label:'**'},*/}
+			{/*		{value:3, label:'***'},*/}
+			{/*		{value:4, label:'****'},*/}
+			{/*		{value:5, label:'*****'},*/}
+			{/*	]}*/}
+			{/*/>*/}
+
+			<StarRating
+				rating={attributes.stars}
+				setRating={stars => setAttributes({stars})}/>
 
 			<RichText className="quote"
 					  placeholder="Start typing here.."
@@ -57,6 +86,7 @@ export default function Edit({attributes, setAttributes}) {
 						/>
 					</MediaUploadCheck>
 				</div>
+
 				<div className="text">
 					<PlainText className="author"
 							   placeholder="Eric Foreman"
