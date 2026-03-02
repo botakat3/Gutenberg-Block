@@ -1,5 +1,6 @@
 @import "/src/scss/variables";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+@import "../../components/ToolsTags/ToolsTags.scss";
 
 .wp-block-kb-project-block{
 		border: 2px dashed #f00;
@@ -29,6 +30,7 @@
 	--card: #e9e4df;
 	--accent: #f47258;
 }
+
 .wp-block-kb-project-block .project,
 .wp-block-kb-project-block .rightside h2,
 .wp-block-kb-project-block .overview,
@@ -58,6 +60,7 @@
 	margin: 0 auto;
 	padding: clamp(40px, 6vw, 80px) 24px;
 }
+
 /* Flipped layout */
 .wp-block-kb-project-block.is-flipped {
 	grid-template-areas:

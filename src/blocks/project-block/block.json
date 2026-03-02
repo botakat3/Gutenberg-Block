@@ -55,7 +55,7 @@
 		},
 		"themeMode": {
 			"type": "string",
-			"default": "dark"
+			"default": "light"
 		}
 	}
 }
