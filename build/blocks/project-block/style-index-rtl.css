@@ -5,7 +5,6 @@
 /*!****************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/project-block/style.scss (1) ***!
   \****************************************************************************************************************************************************************************************************************************************************************/
-@charset "UTF-8";
 .tools-section {
   background: #4b0f1d;
   padding: 32px;
@@ -61,7 +60,6 @@
   cursor: pointer;
   font-weight: 600;
 }
-/* kb/project-block — Notebook grid and two-column layout */
 /* DARK MODE */
 .wp-block-kb-project-block[data-theme=dark] {
   --paper: #2a0711;

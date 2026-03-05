@@ -68,7 +68,64 @@ return array(
 			),
 			'themeMode' => array(
 				'type' => 'string',
-				'default' => 'dark'
+				'default' => 'light'
+			)
+		)
+	),
+	'staff-finder' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'tk/staff-finder',
+		'version' => '0.1.0',
+		'title' => 'Staff finder',
+		'category' => 'design',
+		'icon' => 'id',
+		'description' => 'Searchable staff list.',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'textdomain' => 'high-pulp-blocks',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
+	),
+	'staff-list' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'tk/staff-list',
+		'version' => '0.1.0',
+		'title' => 'List',
+		'category' => 'design',
+		'icon' => 'id',
+		'description' => 'A list of staff members.',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'textdomain' => 'high-pulp-blocks',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'render' => 'file:./render.php',
+		'viewScript' => 'file:./view.js',
+		'attributes' => array(
+			'cardColor' => array(
+				'type' => 'string',
+				'default' => '#000000'
+			),
+			'headingColor' => array(
+				'type' => 'string',
+				'default' => '#ffffff'
+			),
+			'textColor' => array(
+				'type' => 'string',
+				'default' => '#ffffff'
 			)
 		)
 	),
