@@ -31,8 +31,8 @@ import './editor.scss';
  */
 export default function Edit() {
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Staff finder – hello from the editor!', 'high-pulp-blocks' ) }
-		</p>
+		<div { ...useBlockProps() }>
+			Searchable staff list will go here!
+		</div>
 	);
 }
