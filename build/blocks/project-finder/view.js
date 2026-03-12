@@ -25,6 +25,9 @@ function App(props) {
   let [project, setProject] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   let [filterKeyword, setFilterKeyword] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   let [filteredProject, setFilteredProject] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  let [sortOrder, setSortOrder] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('asc');
+  let [selectedTools, setSelectedTools] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  let [showToolDropdown, setShowToolDropdown] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     // get all the staff from the api
     // TODO: Add pagination if there's way more staff than 2 lol
@@ -35,18 +38,70 @@ function App(props) {
     });
   }, []); // <-- this defines all dependencies from when this will run. Empty means it will run once when the page loads.
 
-  //filtering
+  //Filtering
+
+  //Search filter
   function doFilter(keyword) {
     const filteredProject = project.filter(person => person.title.rendered.toLowerCase().includes(keyword.toLowerCase()));
     setFilterKeyword(keyword);
     setFilteredProject(filteredProject);
   }
   ;
+
+  //Sort by filter
+  function doSort(order) {
+    const sorted = [...filteredProject].sort((a, b) => {
+      const titleA = a.title.rendered.toLowerCase();
+      const titleB = b.title.rendered.toLowerCase();
+      if (order === "asc") {
+        return titleA.localeCompare(titleB);
+      } else {
+        return titleB.localeCompare(titleA);
+      }
+    });
+    setSortOrder(order);
+    setFilteredProject(sorted);
+  }
+
+  //Tools filter
+  const allTools = [...new Set(project.flatMap(item => item.acf?.tools || []))];
+  function handleToolChange(tool) {
+    let updatedTools;
+    if (selectedTools.includes(tool)) {
+      updatedTools = selectedTools.filter(t => t !== tool);
+    } else {
+      updatedTools = [...selectedTools, tool];
+    }
+    setSelectedTools(updatedTools);
+    if (updatedTools.length === 0) {
+      setFilteredProject(project);
+      return;
+    }
+    const filtered = project.filter(item => {
+      const tools = item.acf?.tools || [];
+      return updatedTools.some(selectedTool => tools.includes(selectedTool));
+    });
+    setFilteredProject(filtered);
+  }
+
+  // for dropdown event
+  const dropdownRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowToolDropdown(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-      children: "My Projects"
+      children: "Explore my latest projects!"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "",
+      className: "search",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
         className: "input-group-lg input-group mb-5 mt-5 shadow rounded-pill",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -58,6 +113,53 @@ function App(props) {
           placeholder: "Start searching here"
         })
       })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "d-flex justify-content-between align-items-center mb-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "mb-4 position-relative",
+        ref: dropdownRef,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
+          type: "button",
+          className: "btn btn-outline-secondary rounded-pill",
+          onClick: () => setShowToolDropdown(!showToolDropdown),
+          children: ["Filter by Tools", selectedTools.length > 0 ? ` (${selectedTools.length})` : '']
+        }), showToolDropdown && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "dropdown-menu show p-3 shadow border-0 rounded-4 mt-2",
+          children: [allTools.map(tool => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "form-check mb-2",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              className: "form-check-input",
+              type: "checkbox",
+              id: tool,
+              checked: selectedTools.includes(tool),
+              onChange: () => handleToolChange(tool)
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+              className: "form-check-label",
+              htmlFor: tool,
+              children: tool
+            })]
+          }, tool)), selectedTools.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            type: "button",
+            className: "btn btn-sm btn-link text-decoration-none px-0 mt-2",
+            onClick: () => {
+              setSelectedTools([]);
+              setFilteredProject(project);
+            },
+            children: "Clear filters"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+        className: "form-select w-auto rounded-pill ",
+        value: sortOrder,
+        onChange: e => doSort(e.target.value),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+          value: "asc",
+          children: "Sort A \u2192 Z"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+          value: "desc",
+          children: "Sort Z \u2192 A"
+        })]
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_ProjectList__WEBPACK_IMPORTED_MODULE_1__["default"], {
       items: filteredProject
     })]
