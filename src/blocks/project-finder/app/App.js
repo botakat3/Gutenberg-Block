@@ -106,6 +106,7 @@ export default function App() {
 						onClick={() => setShowToolDropdown(!showToolDropdown)}
 					>
 						Filter Tools
+						{selectedTools.length > 0 ? ` (${selectedTools.length})` : ''}
 					</button>
 
 					{showToolDropdown && (

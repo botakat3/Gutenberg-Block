@@ -96,11 +96,11 @@ function App() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         ref: dropdownRef,
         className: "position-relative",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
           type: "button",
           className: "btn btn-outline-dark rounded-pill",
           onClick: () => setShowToolDropdown(!showToolDropdown),
-          children: "Filter Tools"
+          children: ["Filter Tools", selectedTools.length > 0 ? ` (${selectedTools.length})` : '']
         }), showToolDropdown && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "dropdown-menu show p-3 shadow border-0 rounded-4 mt-2",
           children: allTools.map(tool => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
