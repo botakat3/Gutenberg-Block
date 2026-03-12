@@ -31,8 +31,8 @@ import './editor.scss';
  */
 export default function Edit() {
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Searchable project listing – hello from the editor!', 'high-pulp-blocks' ) }
-		</p>
+		<div { ...useBlockProps() }>
+			List should go here
+		</div>
 	);
 }

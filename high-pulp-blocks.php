@@ -28,3 +28,34 @@ function tk_high_pulp_blocks_block_init() {
 	wp_register_block_types_from_metadata_collection( __DIR__ . '/build/blocks', __DIR__ . '/build/blocks-manifest.php' );
 }
 add_action( 'init', 'tk_high_pulp_blocks_block_init' );
+
+
+add_action('rest_api_init', function () {
+	register_rest_field('project', 'thumbnail_url', [
+		'get_callback' => function ($post_arr) {
+			$image = get_field('thumbnail', $post_arr['id']);
+
+			if (!$image) {
+				return null;
+			}
+
+			// If ACF returns an array
+			if (is_array($image) && isset($image['url'])) {
+				return $image['url'];
+			}
+
+			// If ACF returns an attachment ID
+			if (is_numeric($image)) {
+				return wp_get_attachment_image_url((int) $image, 'thumbnail');
+			}
+
+			// If ACF already returns a URL string
+			if (is_string($image)) {
+				return $image;
+			}
+
+			return null;
+		},
+		'schema' => null,
+	]);
+});

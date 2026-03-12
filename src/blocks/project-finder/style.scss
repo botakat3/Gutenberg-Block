@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/bootstrap";
 /**
  * The following styles get applied both on the front of your site
  * and in the editor.
@@ -5,8 +6,63 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-tk-project-finder {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+.card-img {
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 1 / 1;
+	overflow: hidden;
+
+
+
+}
+.card-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+h2 {
+	font-size: 36px;
+	margin-bottom: 20px;
+	font-family: 'Super Chill';
+	font-weight: normal;
+	font-style: normal;
+}
+p {
+	font-size: .9rem;
+}
+
+.tools-title{
+	font-size: .4rem;
+	margin-bottom: 20px;
+	font-family: 'Super Chill';
+	font-weight: normal;
+	font-style: normal;
+}
+
+.tools-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .4rem;
+	margin-bottom: .9rem;
+}
+
+.tool-pill {
+	display: inline-flex;
+	align-items: center;
+	padding: 10px 15px;
+	gap: 10px;
+	border-radius: 999px;
+	background: #4b0f1d;;
+	color: white;
+	font-size: 0.7rem;
+
+}
+
+.btn-primary {
+	background-color: #F47258;
+}
+
+.btn-primary:hover {
+	background-color: #4b0f1d;
 }

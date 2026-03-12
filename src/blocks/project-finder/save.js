@@ -17,8 +17,8 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 export default function save() {
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Searchable project listing – hello from the saved content!' }
-		</p>
+		<div { ...useBlockProps.save() }>
+			Loading Skeleton should go here
+		</div>
 	);
 }
