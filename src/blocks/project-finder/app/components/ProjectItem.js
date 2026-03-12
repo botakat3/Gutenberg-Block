@@ -25,17 +25,6 @@ export default function ProjectItem({ item, loading }) {
 							) : (
 								<h2 className="card-title">{item.title.rendered}</h2>
 							)}
-
-							{loading ? (
-								<>
-									<div className="skeleton skeleton-text mb-2"></div>
-									<div className="skeleton skeleton-text mb-2"></div>
-									<div className="skeleton skeleton-text short mb-4"></div>
-								</>
-							) : (
-								<p className="card-text p-3">{item.acf?.project_description}</p>
-							)}
-
 							<div className="tools-section p-3">
 								{loading ? (
 									<>
@@ -59,6 +48,17 @@ export default function ProjectItem({ item, loading }) {
 									</>
 								)}
 							</div>
+
+							{loading ? (
+								<>
+									<div className="skeleton skeleton-text mb-2"></div>
+									<div className="skeleton skeleton-text mb-2"></div>
+									<div className="skeleton skeleton-text short mb-4"></div>
+								</>
+							) : (
+								<p className="card-text p-3">{item.acf?.project_description}</p>
+							)}
+
 
 							<div className="mt-auto">
 								{loading ? (
