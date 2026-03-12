@@ -4,12 +4,15 @@ import ProjectList from "./components/ProjectList";
 export default function App(props){
 	//variable     , method      =            default value
 	let [project, setProject] = useState([]);
-	let [filterKeyword, setFilterKeyword] = useState('');
 	let [filteredProject, setFilteredProject] = useState([]);
+	const [loading, setLoading] = useState(true);
+
+	let [filterKeyword, setFilterKeyword] = useState('');
 	let [sortOrder, setSortOrder] = useState('asc');
 	let [selectedTools, setSelectedTools] = useState([]);
+
 	let [showToolDropdown, setShowToolDropdown] = useState(false);
-	const [loading, setLoading] = useState(true);
+
 
 	useEffect(() => {
 		// get all the staff from the api
@@ -29,38 +32,37 @@ export default function App(props){
 
 
 	//Filtering
+	function applyFilters(keyword, tools, order) {
+		let updatedProjects = [...project];
 
-	//Search filter
-	function doFilter(keyword){
-		const filteredProject = project.filter(person => person.title.rendered.toLowerCase().includes(keyword.toLowerCase()));
+		// search
+		if (keyword.trim() !== '') {
+			updatedProjects = updatedProjects.filter(item =>
+				item.title.rendered.toLowerCase().includes(keyword.toLowerCase())
+			);
+		}
 
-		setFilterKeyword(keyword);
-		setFilteredProject(filteredProject);
+		// tools filter
+		if (tools.length > 0) {
+			updatedProjects = updatedProjects.filter(item => {
+				const projectTools = item.acf?.tools || [];
+				return tools.some(tool => projectTools.includes(tool));
+			});
+		}
 
-	}
-
-
-	//Sort by filter
-	function doSort(order){
-		const sorted = [...filteredProject].sort((a,b) => {
+		// sort
+		updatedProjects.sort((a, b) => {
 			const titleA = a.title.rendered.toLowerCase();
 			const titleB = b.title.rendered.toLowerCase();
 
-			if(order === "asc"){
+			if (order === 'asc') {
 				return titleA.localeCompare(titleB);
-			}else{
-				return titleB.localeCompare(titleA);
 			}
+			return titleB.localeCompare(titleA);
 		});
 
-		setSortOrder(order);
-		setFilteredProject(sorted);
+		setFilteredProject(updatedProjects);
 	}
-
-	//Tools filter
-	const allTools = [...new Set(
-		project.flatMap(item => item.acf?.tools || [])
-	)];
 
 	function handleToolChange(tool) {
 		let updatedTools;
@@ -85,7 +87,6 @@ export default function App(props){
 
 		setFilteredProject(filtered);
 	}
-
 // for dropdown event
 	const dropdownRef = useRef(null);
 	useEffect(() => {
